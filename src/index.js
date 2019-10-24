@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import './index.css';
 
 function Square(props) {
@@ -9,6 +10,11 @@ function Square(props) {
     </button>
   );
 }
+
+Square.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.oneOf(['X','O']),
+};
   
 class Board extends React.Component {
   renderSquare(i) {
@@ -42,6 +48,11 @@ class Board extends React.Component {
     );
   }
 }
+
+Board.propTypes = {
+  squares: PropTypes.arrayOf(PropTypes.oneOf(['X','O'])).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
   
 class Game extends React.Component {
   constructor(props) {
